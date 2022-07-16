@@ -1,60 +1,56 @@
-import React from "react";
-import {
-  Button,
-  Container,
-  Form,
-  Nav,
-  Navbar,
-  NavDropdown,
-  Offcanvas,
-} from "react-bootstrap";
+import React, { FC, useState } from "react";
+import { Link } from "react-router-dom";
+import classes from "./headerStyles.module.css";
 
-const Header = () => {
+const Header: FC = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  console.log(isOpen);
+
   return (
-    <Navbar sticky="top" expand="lg">
-      <Container fluid>
-        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
-        <Navbar.Offcanvas
-          id={`offcanvasNavbar-expand-md`}
-          aria-labelledby={`offcanvasNavbarLabel-expand-xs`}
-          placement="end"
+    <header className={classes.header}>
+      <nav>
+        <div
+          className={`${classes.leftLinks} ${
+            !isOpen === false ? `${classes.active}` : ""
+          }`}
         >
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-md`}>
-              Offcanvas
-            </Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body>
-            <Nav className="justify-content-end flex-grow-1 pe-3">
-              <Nav.Link href="#action1">Home</Nav.Link>
-              <Nav.Link href="#action2">Link</Nav.Link>
-              <NavDropdown
-                title="Dropdown"
-                id={`offcanvasNavbarDropdown-expand-md`}
-              >
-                <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">
-                  Something else here
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-            <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-success">Search</Button>
-            </Form>
-          </Offcanvas.Body>
-        </Navbar.Offcanvas>
-      </Container>
-    </Navbar>
+          {["Home", "Buy"].map((links) => (
+            <ul>
+              <li>
+                <Link to="#">{links}</Link>
+              </li>
+            </ul>
+          ))}
+        </div>
+        <div className={classes.logo}>
+          <h1>REALTORLABS</h1>
+          <Link
+            to="#"
+            className={classes.hamburgerLines}
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <span className={classes.lines}></span>
+            <span className={classes.lines}></span>
+            <span className={classes.lines}></span>
+          </Link>
+        </div>
+
+        <div
+          className={`${classes.rightLinks} ${
+            !isOpen === false ? `${classes.active}` : ""
+          }`}
+        >
+          {["Rent", "About"].map((links) => (
+            <ul>
+              <li>
+                <Link to="#">{links}</Link>
+              </li>
+            </ul>
+          ))}
+        </div>
+      </nav>
+    </header>
   );
 };
 
