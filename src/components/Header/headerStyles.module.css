@@ -1,95 +1,11 @@
 .header {
-  position: sticky;
+  display: flex;
+  justify-content: center;
   width: 100vw;
 }
 
-.header nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem;
-}
-
-.leftLinks {
-  display: none;
-  gap: 25px;
-}
-
-.rightLinks {
-  display: none;
-  gap: 25px;
-}
-
-.rightLinks ul {
-  display: flex;
-  justify-content: center;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.logo h1 {
-  text-align: center;
-  order: -1;
-  width: 100%;
-}
-
-.hamburgerLines {
-  display: none;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 30px;
-  height: 21px;
-}
-
-.hamburgerLines .lines {
-  height: 3px;
-  width: 100%;
-  background-color: grey;
-  border-radius: 10px;
-}
-
-@media (max-width: 768px) {
-  .hamburgerLines {
-    display: flex;
-  }
-
-  .header nav {
-    flex-direction: column;
-  }
-
-  .header nav :nth-child(2) {
-    order: -1;
-  }
-
-  .rightLinks {
-    flex-direction: column-reverse;
-    align-items: center;
-    gap: 0;
-  }
-  .leftLinks {
-    flex-direction: column-reverse;
-    align-items: center;
-    gap: 0;
-  }
-
-  .leftLinks.active {
-    display: flex;
-  }
-
-  .rightLinks.active {
-    display: flex !important;
-  }
-}
-
-@media (min-width: 769px) {
-  .rightLinks {
-    display: flex;
-  }
-  .leftLinks {
-    display: flex;
+@media (max-width: 600px) {
+  .desktopNav {
+    display: none;
   }
 }
