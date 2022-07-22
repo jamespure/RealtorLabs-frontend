@@ -3,6 +3,13 @@ import axios from "axios";
 
 interface SearchResult {}
 
+const initialState = {
+  data: [],
+  isSuccess: false,
+  status: "failed",
+  loading: false,
+};
+
 export const getSearchResults = createAsyncThunk(
   "searchResults/getSearchResultsData",
   async (location: string, { rejectWithValue }) => {
@@ -19,12 +26,7 @@ export const getSearchResults = createAsyncThunk(
 
 export const searchResultsSlice = createSlice({
   name: "searchResults",
-  initialState: {
-    data: [],
-    isSuccess: false,
-    status: "failed",
-    loading: false,
-  },
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getSearchResults.pending, (state, action) => {
