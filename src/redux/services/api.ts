@@ -4,7 +4,7 @@ import { PropertyListing } from "../../types";
 export const propertyListingApi = createApi({
   reducerPath: "propertyListingApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/api/v1/",
+    baseUrl: "https://realtorlabs-backend.herokuapp.com/",
   }),
   endpoints: (builder) => ({
     getPropertyListing: builder.query<PropertyListing[], string>({
